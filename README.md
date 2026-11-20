@@ -41,7 +41,7 @@ order_id,date,product,supplier,sale_price,purchase_cost,marketplace_fee,status
 1004,2026-11-04,Xbox Game Pass 1M,SupplierB,9.90,0.00,0.00,PROBLEM
 ```
 
-All example data is fictional. Open orders are included in status statistics but are not treated as completed sales. See [SPEC.md](SPEC.md) for the input format, calculation rules and assumptions about cancelled and refunded orders.
+All example data is fictional. Open orders are included in status statistics but are not treated as completed sales. See [Project Specification](docs/SPEC.md) for the input format, calculation rules and assumptions about cancelled and refunded orders.
 
 ## Technologies
 
