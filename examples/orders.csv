@@ -1,0 +1,8 @@
+order_id,date,product,supplier,sale_price,purchase_cost,marketplace_fee,status
+1001,2026-11-03,Steam Gift Card 20 EUR,SupplierA,21.50,17.80,1.29,DELIVERED
+1002,2026-11-03,Xbox Game Pass 1M,SupplierB,9.90,7.40,0.59,REFUNDED
+1003,2026-11-04,Steam Gift Card 20 EUR,SupplierA,21.50,17.80,1.29,IN_PROGRESS
+1004,2026-11-04,Xbox Game Pass 1M,SupplierB,9.90,0.00,0.00,PROBLEM
+1005,2026-11-05,"Steam, Gift Card",SupplierC,21.50,17.80,1.29,CANCELLED
+1006,2026-11-06,Steam Gift Card 20 EUR,SupplierA,21.50,17.80,1.29,PENDING
+1007,2026-11-07,Steam Gift Card 20 EUR,SupplierA,21.50,17.80,1.29,DELIVERED
