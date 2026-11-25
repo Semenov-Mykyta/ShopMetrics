@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,8 +31,8 @@ public class ShopMetrics {
         Set<String> orderIds = new HashSet<>();
         int skippedRows = 0;
 
-        for (int i = 1; i < lines.size() - 1; i++) {
-            String[] fields = lines.get(i).split(",", -1);
+        for (int i = 1; i < lines.size(); i++) {
+            String[] fields = splitCsvLine(lines.get(i));
             String problem = validate(fields, counts, orderIds);
             if (problem != null) {
                 skippedRows++;
@@ -50,6 +51,31 @@ public class ShopMetrics {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
         System.out.println("Skipped rows: " + skippedRows);
+    }
+
+    private static String[] splitCsvLine(String line) {
+        List<String> fields = new ArrayList<>();
+        StringBuilder field = new StringBuilder();
+        boolean inQuotes = false;
+
+        for (int i = 0; i < line.length(); i++) {
+            char character = line.charAt(i);
+            if (character == '"') {
+                if (inQuotes && i + 1 < line.length() && line.charAt(i + 1) == '"') {
+                    field.append('"');
+                    i++;
+                } else {
+                    inQuotes = !inQuotes;
+                }
+            } else if (character == ',' && !inQuotes) {
+                fields.add(field.toString());
+                field.setLength(0);
+            } else {
+                field.append(character);
+            }
+        }
+        fields.add(field.toString());
+        return fields.toArray(new String[0]);
     }
 
     private static String validate(String[] fields, Map<String, Integer> counts, Set<String> orderIds) {
